@@ -1,0 +1,2292 @@
+<!DOCTYPE html>
+<html lang="" xml:lang="">
+  <head>
+    <title>R aplicado a la medición de la biodiversidad 🐟🦀🐅👨‍💻</title>
+    <meta charset="utf-8" />
+    <meta name="author" content="👋 Blgo. Uriel Torres Zevallos" />
+    <meta name="date" content="2022-01-08" />
+    <script src="libs/header-attrs-2.7/header-attrs.js"></script>
+    <link href="libs/remark-css-0.0.1/default.css" rel="stylesheet" />
+    <link href="libs/remark-css-0.0.1/default-fonts.css" rel="stylesheet" />
+    <script src="libs/clipboard-2.0.6/clipboard.min.js"></script>
+    <link href="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-clipboard-0.2.6/xaringanExtra-clipboard.js"></script>
+    <script>window.xaringanExtraClipboard(null, {"button":"<i class=\"fa fa-clipboard\"><\/i>","success":"<i class=\"fa fa-check\" style=\"color: #90BE6D\"><\/i>","error":"<i class=\"fa fa-times-circle\" style=\"color: #F94144\"><\/i>"})</script>
+    <link href="libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+    <link href="libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+    <script src="libs/fabric-4.3.1/fabric.min.js"></script>
+    <link href="libs/xaringanExtra-scribble-0.0.1/scribble.css" rel="stylesheet" />
+    <script src="libs/xaringanExtra-scribble-0.0.1/scribble.js"></script>
+    <script>document.addEventListener('DOMContentLoaded', function() { window.xeScribble = new Scribble({"pen_color":["#FF0000"],"pen_size":3,"eraser_size":30}) })</script>
+    <link href="libs/xaringanExtra-extra-styles-0.2.6/xaringanExtra-extra-styles.css" rel="stylesheet" />
+    <link href="libs/tile-view-0.2.6/tile-view.css" rel="stylesheet" />
+    <script src="libs/tile-view-0.2.6/tile-view.js"></script>
+    <script type="application/json" id="xaringanExtra-editable-docid">{"id":"xecd1c1766db4bb09519ffe38451e8a5","expires":14}</script>
+    <script src="libs/himalaya-1.1.0/himalaya.js"></script>
+    <script src="libs/js-cookie-3.0.0/js.cookie.js"></script>
+    <link href="libs/editable-0.2.6/editable.css" rel="stylesheet" />
+    <script src="libs/editable-0.2.6/editable.js"></script>
+    <link href="libs/panelset-0.2.6/panelset.css" rel="stylesheet" />
+    <script src="libs/panelset-0.2.6/panelset.js"></script>
+    <script src="libs/kePrint-0.0.1/kePrint.js"></script>
+    <link href="libs/lightable-0.0.1/lightable.css" rel="stylesheet" />
+  </head>
+  <body>
+    <textarea id="source">
+class: center, middle, inverse, title-slide
+
+# R aplicado a la medición de la biodiversidad 🐟🦀🐅👨‍💻
+### 👋 Blgo. Uriel Torres Zevallos
+### Museo de Historia Natural de la URP
+### Asociación Científica para la Conservación de la Biodiversidad
+### 2022-01-08
+
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+## Tipos de estudio
+&lt;img src = "images/tipos_estudio.png" style = "width: 110%" /&gt;
+
+---
+
+## Conceptos estadísticos
+&lt;center&gt;
+&lt;img src = "images/conceptos_estadisticos.png" style = "width: 90%"/&gt;
+&lt;/center&gt;
+
+---
+
+## Unidades de muestreo: ¿Para qué? 
+&lt;center&gt;
+&lt;img src = "images/inext_animado.gif" style = "width: 63%" /&gt;
+&lt;/center&gt;
+
+
+---
+
+## Unidades de muestreo: ¿Para qué? 
+&lt;center&gt;
+&lt;img src = "images/inext_animado.gif" style = "width: 63%" /&gt;
+&lt;/center&gt;
+
+---
+
+## Tipos de variables
+&lt;center&gt;
+&lt;img src = "images/tipos_variables.png" style = "wdith:70%" /&gt;
+&lt;/center&gt;
+
+---
+
+## Escalas de medición
+&lt;center&gt;
+&lt;img src = "images/escalas_medicion.png" style = "width:150%" /&gt;
+&lt;/center&gt;
+
+
+---
+
+## Empecemos...¿Qué rayos es R?
+
+
+![](images/historia_R.jpg)
+- R es considerado como un dialecto del lenguaje S 
+
+- R fue creado por Ross Ihaka &amp; Robert Gentleman
+
+- Lenguaje de Programación Orientada a Objetos (POO)
+
+- Si el objeto ya existe, su valor es borrado y reemplazado
+
+- Operador asignación ( &lt;- ) 
+
+- Uso relativamente intuitivo
+
+---
+
+## Comunidad Comprometida
+
+[![](images/logo stack.png)](https://stackoverflow.com/) [![](images/cross_imagen.png)](https://stats.stackexchange.com/)
+[![](images/ecology_in_r.png)](https://www.facebook.com/groups/ecologyinr)
+
+---
+
+## ¿Por qué debo usar R, y no SPSS, Infostat, Past, STATA...?
+
+- Potencial en visualización de datos (gráficos de alto impacto)
+
+- Potencial en uso estadístico  (Frecuentista &amp; Bayesiano)
+
+- R resume los resultados en una línea
+
+- R es compatible con todo (código libre y abierto)
+
+- Comunidad comprometida
+
+- Conexión con otros software (\Latex, Python, Julia, QGIS, MaxEnt)
+
+- R hace de todo
+
+---
+
+## Paquetes 
+
+```r
+# 22 de diciembre 
+nrow(available.packages())
+```
+
+```
+## [1] 18579
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-3-1.png" style="display: block; margin: auto;" /&gt;
+
+[Todos los Paquetes de R](https://www.rdocumentation.org/)
+
+---
+
+## El paquete que te soluciona la vida: **Tidyverse**
+[Libro: R for Data Science (**Wickham** &amp; Grolemund, 2017)](https://r4ds.had.co.nz/)
+
+&lt;p&gt; &lt;/p&gt;
+&lt;center&gt;
+&lt;img src="images/tidyverse.png" height="450px" width="600px" class="center"/&gt;
+&lt;/center&gt;
+
+---
+class: center, middle, inverse
+# Conociendo a RStudio: Workspace
+
+---
+
+# Atajos (Cheatsheet: [RStudio](https://drive.google.com/drive/u/0/folders/1T5eVp1UuQPDNDnNWRxe8WhtPDRF06aC9))
+
+- Ctrl + Shift + N = Abrir Script
+
+- Ctrl + S = Guardar Script
+
+- Ctrl + W = Cerrar Script
+
+- Ctrl + 1 = Ir a Script
+
+- Ctrl + 2 = Ir a Consola
+
+- Ctrl + L = Limpiar Consola
+
+- Ctrl + 6 = Ir a Plots
+
+- Ctrl + Tab = Mover entre Scripts
+
+---
+
+# Teoría y creación de objetos de R
+
+R trabaja con objetos (POO), y **todos** tienen...
+- **Nombre**: debe comenzar con una letra (A- Z o a-z), puede incluir letras, dígitos (0-9), y puntos (.). R discrimina entre mayúsculas y minúsculas (X y x).
+
+
+```r
+abundancia &lt;- c(12, 12, 11, 10, 8, 23)
+playas &lt;- c("San Bartolo", "Pucusana", "Chancaíllo", "Santa Rosa", "Costa Azul", "Lurín")
+```
+
+--
+
+- **Contenido**: Numérico o Caracteres
+
+
+```r
+abundancia
+```
+
+```
+## [1] 12 12 11 10  8 23
+```
+
+```r
+playas
+```
+
+```
+## [1] "San Bartolo" "Pucusana"    "Chancaíllo"  "Santa Rosa"  "Costa Azul" 
+## [6] "Lurín"
+```
+
+---
+- **Dimensión** (dataframe) o **longitud** (vector)
+
+
+```r
+length(abundancia)
+```
+
+```
+## [1] 6
+```
+
+```r
+length(playas)
+```
+
+```
+## [1] 6
+```
+
+
+```r
+base_datos &lt;- data.frame(
+                        Alumnos = c("Yessica", "Juan", "Uriel"),
+                        Nota = c(20, 17, 11)
+                        )
+base_datos
+```
+
+```
+##   Alumnos Nota
+## 1 Yessica   20
+## 2    Juan   17
+## 3   Uriel   11
+```
+
+```r
+dim(base_datos)
+```
+
+```
+## [1] 3 2
+```
+
+
+---
+
+# Estructura de datos (**clases**) en R
+![](images/estrutura_datos.jpeg)
+---
+
+## Vector
+
+
+```r
+Playas &lt;- c("San Bartolo", "Pucusana", "Chancaíllo", "Santa Rosa", "Costa Azul", "Lurín")
+class(Playas)
+```
+
+```
+## [1] "character"
+```
+
+--
+
+
+```r
+Nivel_contaminacion &lt;- c("Saludable", "No Saludable", "Poco Saludable", "Saludable", "No Saludable", "No Saludable")
+class(Nivel_contaminacion)
+```
+
+```
+## [1] "character"
+```
+
+--
+
+
+```r
+Presencia_garza &lt;- c(T, F, T, T, F, T)
+class(Presencia_garza)
+```
+
+```
+## [1] "logical"
+```
+
+--
+
+
+```r
+Abundancia_garza &lt;- c(12, 23, 10, 5, 10, 12)
+class(Abundancia_garza)
+```
+
+```
+## [1] "numeric"
+```
+
+---
+
+## Data frame
+
+```r
+data &lt;- data.frame(Playas, Nivel_contaminacion, Presencia_garza, Abundancia_garza)
+
+data
+```
+
+```
+##        Playas Nivel_contaminacion Presencia_garza Abundancia_garza
+## 1 San Bartolo           Saludable            TRUE               12
+## 2    Pucusana        No Saludable           FALSE               23
+## 3  Chancaíllo      Poco Saludable            TRUE               10
+## 4  Santa Rosa           Saludable            TRUE                5
+## 5  Costa Azul        No Saludable           FALSE               10
+## 6       Lurín        No Saludable            TRUE               12
+```
+
+```r
+dim(data)
+```
+
+```
+## [1] 6 4
+```
+
+```r
+class(data)
+```
+
+```
+## [1] "data.frame"
+```
+
+---
+
+## Listas
+
+```r
+lista_a &lt;- list(Playas, Nivel_contaminacion, data)
+```
+
+--
+
+
+```r
+lista_a[[1]]
+```
+
+```
+## [1] "San Bartolo" "Pucusana"    "Chancaíllo"  "Santa Rosa"  "Costa Azul" 
+## [6] "Lurín"
+```
+
+--
+
+
+```r
+lista_a[[2]]
+```
+
+```
+## [1] "Saludable"      "No Saludable"   "Poco Saludable" "Saludable"     
+## [5] "No Saludable"   "No Saludable"
+```
+
+--
+
+
+```r
+lista_a[[3]]
+```
+
+```
+##        Playas Nivel_contaminacion Presencia_garza Abundancia_garza
+## 1 San Bartolo           Saludable            TRUE               12
+## 2    Pucusana        No Saludable           FALSE               23
+## 3  Chancaíllo      Poco Saludable            TRUE               10
+## 4  Santa Rosa           Saludable            TRUE                5
+## 5  Costa Azul        No Saludable           FALSE               10
+## 6       Lurín        No Saludable            TRUE               12
+```
+
+---
+## Listas
+
+
+```r
+lista_b &lt;- list("Hola", Playas, "Colores") 
+lista_b
+```
+
+```
+## [[1]]
+## [1] "Hola"
+## 
+## [[2]]
+## [1] "San Bartolo" "Pucusana"    "Chancaíllo"  "Santa Rosa"  "Costa Azul" 
+## [6] "Lurín"      
+## 
+## [[3]]
+## [1] "Colores"
+```
+
+---
+## Indexación: Selección de subconjuntos 
+### "Ingresar al objeto"
+
+- Vector: [i]
+
+```r
+vector[4]
+```
+
+--
+
+- Matrices y dataframes: [i, j]
+
+```r
+dataframe[4, 1]
+```
+
+--
+
+- Arrays: [i, j, k]
+
+```r
+arreglo[1, 4, 9]
+```
+
+--
+
+- Listas: [[i]]
+
+```r
+lista[[1]]
+```
+
+
+---
+## Indexación en un Data frame
+
+```r
+data[1, 2]
+```
+
+```
+## [1] "Saludable"
+```
+
+```r
+data[3, 1]
+```
+
+```
+## [1] "Chancaíllo"
+```
+
+```r
+data[3, c(1,2,3,4)]
+```
+
+```
+##       Playas Nivel_contaminacion Presencia_garza Abundancia_garza
+## 3 Chancaíllo      Poco Saludable            TRUE               10
+```
+
+```r
+data[3, 1:4]
+```
+
+```
+##       Playas Nivel_contaminacion Presencia_garza Abundancia_garza
+## 3 Chancaíllo      Poco Saludable            TRUE               10
+```
+
+---
+### Data frame: Indexación con DataEditR
+
+```r
+library(DataEditR)
+# DataEditR::data_edit(data)
+```
+![](images/baby_yoda.gif)
+
+---
+
+## Resumen
+&lt;center&gt;
+&lt;img src = "images/resumen_tipos_clases.png" style = "width: 94%" /&gt;
+&lt;/center&gt;
+
+---
+## Conversión y manipulación de objetos 
+
+```r
+numerico &lt;- c(1, 2, 3, 5, 67, 12, 231, 23)
+numerico_2 &lt;- c(1, 0, 1, 0, 1, 1, 1, 1)
+```
+
+--
+
+- Convertir en caracter
+
+```r
+caracter_convertido &lt;-  as.character(numerico)
+```
+
+--
+
+- Convertir en numérico
+
+```r
+numerico_convertido &lt;- as.numeric(caracter)
+```
+
+--
+
+- Convertir en lógico
+
+```r
+logico_convertido &lt;- as.logical(numerico_2)
+```
+
+--
+
+- Convertir en dataframe
+
+```r
+df_convertido &lt;- as.data.frame(numerico_2)
+```
+
+---
+# Operadores lógicos 👀
+
+&lt;table class="table table-striped" style="width: auto !important; margin-left: auto; margin-right: auto;"&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; Símbolo &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; Definición &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; == &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; igual &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; != &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; no igual (diferente) &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &amp;lt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; menor que &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &amp;lt;= &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; menor o igual que &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; mayor que &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &amp;gt;= &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; mayor o igual que &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; | &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; o &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; &amp;amp; &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; y &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; ! &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; no &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; %in% &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; incluido en &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+
+# Bases de datos
+## Untidy data
+&lt;center&gt;
+&lt;img src = "images/untidy.png" style = "width: 90%" /&gt;
+
+&lt;/center&gt;
+
+
+
+---
+
+## Tidy data [(Wickham, 2014)](https://vita.had.co.nz/papers/tidy-data.pdf)
+
+ - Estructura adecuada de la base de datos
+ 
+ - Variable -&gt; columna
+ 
+ - Observación -&gt; fila
+ 
+ - Decimales deben ser puntos (se sugiere)
+
+![](images/tidy_data.png)
+
+---
+
+
+## ¿Será tidy?
+
+```r
+df1 &lt;- data.frame(
+                 nombres = c("Hormiga A", "Hormiga B", "Hormiga C", "Hormiga D"),
+                 Pantanos_Villa = c(12, 22, 9, 10), 
+                 Ventanilla = c(0, 7, 6, 1)
+                 )
+```
+
+&lt;table class=" lightable-paper lightable-striped table" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; font-size: 13px; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; nombres &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Pantanos_Villa &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Ventanilla &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hormiga A &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hormiga B &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hormiga C &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hormiga D &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+
+---
+## ¿Será tidy?
+
+```r
+df2 &lt;- data.frame(
+                  localidad = c("Pantanos de Villa, Ventanilla", "Pantanos de Villa, Ventanilla" ),
+                  Hormiga_A = c(12, 0), 
+                  Hormiga_B = c(22, 7), 
+                  Hormiga_C = c(9, 6), 
+                  Hormiga_D = c(10, 1)
+                 )
+```
+
+
+&lt;table class=" lightable-paper lightable-striped table" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; font-size: 13px; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; localidad &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Hormiga_A &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Hormiga_B &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Hormiga_C &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; Hormiga_D &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Pantanos de Villa, Ventanilla &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Pantanos de Villa, Ventanilla &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+## ¿Será tidy? 
+
+
+
+```r
+df3 &lt;-  data.frame(
+                  especie = c("Hormiga A", "Hormiga B", "Hormiga C", "Hormiga D", "Hormiga A", "Hormiga B", "Hormiga C", "Hormiga D"), 
+                  localidad = c("Pantanos de Villa", 'Pantanos de Villa', "Pantanos de Villa", "Pantanos de Villa", "Ventanilla", 'Ventanilla', "Ventanilla", "Ventanilla"), 
+                  abundancia = c(12, 22, 9, 10, 0, 7, 6, 1)
+                  )
+```
+
+&lt;table class=" lightable-paper lightable-striped table" style='font-family: "Arial Narrow", arial, helvetica, sans-serif; margin-left: auto; margin-right: auto; font-size: 13px; margin-left: auto; margin-right: auto;'&gt;
+ &lt;thead&gt;
+  &lt;tr&gt;
+   &lt;th style="text-align:left;"&gt; especie &lt;/th&gt;
+   &lt;th style="text-align:left;"&gt; localidad &lt;/th&gt;
+   &lt;th style="text-align:right;"&gt; abundancia &lt;/th&gt;
+  &lt;/tr&gt;
+ &lt;/thead&gt;
+&lt;tbody&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hormiga A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Pantanos de Villa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 12 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hormiga B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Pantanos de Villa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 22 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hormiga C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Pantanos de Villa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 9 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hormiga D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Pantanos de Villa &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 10 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hormiga A &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ventanilla &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 0 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hormiga B &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ventanilla &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 7 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hormiga C &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ventanilla &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 6 &lt;/td&gt;
+  &lt;/tr&gt;
+  &lt;tr&gt;
+   &lt;td style="text-align:left;"&gt; Hormiga D &lt;/td&gt;
+   &lt;td style="text-align:left;"&gt; Ventanilla &lt;/td&gt;
+   &lt;td style="text-align:right;"&gt; 1 &lt;/td&gt;
+  &lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+
+---
+## ¿Y si no tengo ninguna data 😥?
+
+
+```r
+data("iris")
+data("msleep")
+data("trees")
+data("beavers")
+data("PlantGrowth")
+data("InsectSprays")
+
+library(iNEXT)
+library(vegan)
+data("ant")
+data("spider")
+
+# R presente en Ciencia ciudadana: 
+library(rgbif)
+library(rinat)
+```
+
+---
+
+class: inverse, middle, center
+# Importar bases de datos
+
+---
+
+### Importar en formato **CSV** (comma-separated values)
+
+```r
+df &lt;- read.csv("/home/biologisturiel/Descargas/data/data_emerita.csv",
+               header = T,
+               sep = ",",
+               dec = ".")
+```
+
+--
+
+
+```r
+head(df, 4)
+```
+
+```
+##   ID       NMP      EST FC                  LC DIST LCT    SEX NTP RP P_altmani
+## 1  1 Saludable Invierno  0 Santa María del Mar    0 2.0  Macho   0  0         0
+## 2  2 Saludable Invierno  0 Santa María del Mar    5 2.1  Macho   1  1         1
+## 3  3 Saludable Invierno  0 Santa María del Mar    5 3.2 Hembra   2  1         2
+## 4  4 Saludable Invierno  0 Santa María del Mar   10 1.7  Macho   0  0         0
+##   Proleptus_sp.
+## 1             0
+## 2             0
+## 3             0
+## 4             0
+```
+
+---
+
+### Importar en formato Excel (xls, xlsx)
+
+```r
+library(readxl)
+df_excel &lt;- read_excel('aca debe ir la dirección en donde se encuentra tu archivo, tu archivo debe acabar en xls o xlsx', sheet = "Hoja1")
+```
+
+--
+
+### Importar un Excel Drive (Google)
+
+```r
+library(gsheet)
+df_excel_drive &lt;- gsheet2tbl("https://docs.google.com/spreadsheets/d/13gV_HUqe55328loEn0XPaxxG7-pNbpZ9/edit#gid=1922099029")
+```
+
+--
+
+### Importar archivos de más de 3GB (muy pesados)
+
+```r
+library(data.table)
+df_pesada &lt;- fread("/home/biologisturiel/Descargas/data/data_emerita.csv")
+```
+
+---
+
+### Importar del portapapeles (clipboard)
+
+```r
+df_clipboard &lt;- read.delim("clipboard")
+```
+
+--
+
+### Importar archivos delimitados por espacios (txt) (por ejem [GBIF](https://www.gbif.org/))
+
+```r
+library(data.table)
+df_gbif &lt;- fread("/home/biologisturiel/Descargas/data/occurrence.txt")
+```
+
+--
+
+### Importar con file.choose 
+
+```r
+df_aelegir &lt;- fread(file.choose()) 
+```
+
+--
+
+### Importar con clicks 
+
+```r
+# Desde RStudio
+```
+
+---
+
+class: inverse, middle, center
+# Exportar bases de datos (y resultados)
+
+---
+
+### Exportar en formato CSV (decimal: punto)
+
+```r
+data("iris")
+write.csv(iris, "df_iris_punto.csv", row.names = F, dec = ".")
+```
+
+--
+
+### Exportar en formato CSV (decimal: coma)
+
+```r
+data("iris")
+write.csv(iris, "df_iris_coma.csv", row.names = F, dec = ",")
+```
+
+--
+
+### Exportar en formato Excel (xls, xslx)
+
+```r
+data("msleep")
+write.xlsx(msleep, "df_msleep.xlsx")
+```
+
+---
+## Comandos fundamentales para reconocer un objeto 
+
+```r
+# muestra todos los objetos del environment 
+ls()
+# muestra los objetos acorde al patrón solicitado
+ls(pat = "^m")
+# estructura del objeto
+str()
+# remueve objeto 
+rm()
+# remueve todos los objetos
+rm(list = ls())
+# remueve objetos acorde al patrón
+rm(list = ls(pat = "^m"))
+# clase de objeto
+class()
+# filas del objeto
+nrow()
+# columnas del objeto
+ncol()
+```
+
+---
+
+## Comandos fundamentales para reconocer un objeto 
+
+```r
+# longitud 
+length()
+# dimensión
+dim()
+# ver niveles del factor
+level()
+# nombres de columnas del objeto 
+names()
+# abrir (ver) el objeto
+View()
+# ver parte inicial del objeto 
+head()
+# ver parte final del objeto
+tail()
+# resumen del objeto
+summary()
+# frecuencias absolutas del objeto
+table()
+# frecuencias relativas del objeto
+prop.table()
+```
+
+---
+
+
+## Obtención de estadísticos 
+### [Data de aplicación](https://www.researchgate.net/publication/330900496_IMPLICATIONS_OF_THE_SANITARY_QUALITY_OF_BEACHES_IN_THE_PARASITIC_ECOLOGY_OF_EMERITA_ANALOGA_STIMPSON_1857_DECAPODA_HIPPIDAE)
+
+
+```r
+library(tidyverse)
+glimpse(df)
+```
+
+```
+## Rows: 3,625
+## Columns: 12
+## $ ID            &lt;int&gt; 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 1…
+## $ NMP           &lt;chr&gt; "Saludable", "Saludable", "Saludable", "Saludable", "Sal…
+## $ EST           &lt;chr&gt; "Invierno", "Invierno", "Invierno", "Invierno", "Inviern…
+## $ FC            &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+## $ LC            &lt;chr&gt; "Santa María del Mar", "Santa María del Mar", "Santa Mar…
+## $ DIST          &lt;int&gt; 0, 5, 5, 10, 10, 10, 10, 10, 10, 10, 10, 10, 10, 15, 15,…
+## $ LCT           &lt;dbl&gt; 2.0, 2.1, 3.2, 1.7, 1.7, 1.6, 3.4, 2.2, 2.2, 2.2, 1.6, 2…
+## $ SEX           &lt;chr&gt; "Macho", "Macho", "Hembra", "Macho", "Macho", "Macho", "…
+## $ NTP           &lt;int&gt; 0, 1, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…
+## $ RP            &lt;int&gt; 0, 1, 1, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…
+## $ P_altmani     &lt;int&gt; 0, 1, 2, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1,…
+## $ Proleptus_sp. &lt;int&gt; 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0,…
+```
+
+---
+### Conociendo los **niveles** de las variables independientes (factor)
+
+```r
+unique(df$LC)
+```
+
+```
+##  [1] "Santa María del Mar" "Los Viños"           "Venecia"            
+##  [4] "Hermosa"             "San Pedro"           "Los Delfines"       
+##  [7] "Conchán"             "El Silencio"         "Chica"              
+## [10] "Costa Azul"          "Los Yuyos"           "Agua Dulce"         
+## [13] "Pucusana"
+```
+--
+
+
+```r
+unique(df$NMP)
+```
+
+```
+## [1] "Saludable"              "No saludable"           "Regularmente saludable"
+```
+
+--
+
+```r
+unique(df$EST)
+```
+
+```
+## [1] "Invierno"  "Primavera" "Otoño"
+```
+
+--
+
+```r
+unique(df$SEX)
+```
+
+```
+## [1] "Macho"  "Hembra"
+```
+
+---
+### Valores máximos y mínimos 
+
+```r
+min(df$NTP)
+```
+
+```
+## [1] 0
+```
+
+```r
+which.max(df$NTP)
+```
+
+```
+## [1] 1702
+```
+--
+
+
+```r
+max(df$NTP)
+```
+
+```
+## [1] 26
+```
+
+```r
+which.min(df$NTP)
+```
+
+```
+## [1] 1
+```
+
+--
+
+```r
+range(df$NTP)
+```
+
+```
+## [1]  0 26
+```
+
+```r
+c(min(df$NTP), max(df$NTP))
+```
+
+```
+## [1]  0 26
+```
+
+---
+
+### Estadísticos según variable independiente (factor)
+
+```r
+aggregate(NTP ~ NMP, df, mean)
+```
+
+```
+##                      NMP      NTP
+## 1           No saludable 5.800000
+## 2 Regularmente saludable 2.933333
+## 3              Saludable 2.123505
+```
+
+--
+
+
+```r
+aggregate(NTP ~ NMP, df, sd)
+```
+
+```
+##                      NMP      NTP
+## 1           No saludable 4.491261
+## 2 Regularmente saludable 2.313521
+## 3              Saludable 3.016333
+```
+
+---
+
+### Estadísticos según variable independiente (factor)
+
+```r
+library(Rmisc)
+RP_lc_sex &lt;- summarySE(df, measurevar = c("RP"), groupvars = c("LC", "SEX"))
+RP_lc_sex
+```
+
+```
+##                     LC    SEX   N         RP        sd         se         ci
+## 1           Agua Dulce Hembra 232 1.20258621 0.7601505 0.04990633 0.09832977
+## 2           Agua Dulce  Macho 329 1.20668693 0.7155615 0.03945018 0.07760730
+## 3                Chica Hembra  43 0.81395349 0.5878052 0.08963945 0.18089974
+## 4                Chica  Macho  21 0.95238095 0.7400129 0.16148405 0.33684982
+## 5              Conchán Hembra  10 1.40000000 0.5163978 0.16329932 0.36940872
+## 6              Conchán  Macho   5 1.60000000 0.5477226 0.24494897 0.68008738
+## 7           Costa Azul Hembra   3 2.00000000 0.0000000 0.00000000 0.00000000
+## 8           Costa Azul  Macho   3 1.33333333 1.1547005 0.66666667 2.86843515
+## 9          El Silencio Hembra  57 0.82456140 0.4676234 0.06193824 0.12407720
+## 10         El Silencio  Macho  23 0.82608696 0.3875534 0.08081047 0.16759065
+## 11             Hermosa Hembra 127 0.65354331 0.6828739 0.06059526 0.11991623
+## 12             Hermosa  Macho 104 0.34615385 0.6036978 0.05919744 0.11740417
+## 13        Los Delfines Hembra  98 1.02040816 0.8492518 0.08578739 0.17026422
+## 14        Los Delfines  Macho 348 0.58333333 0.7093109 0.03802306 0.07478466
+## 15           Los Viños Hembra 416 0.75721154 0.6810310 0.03339029 0.06563519
+## 16           Los Viños  Macho 438 0.67351598 0.6351864 0.03035038 0.05965086
+## 17           Los Yuyos Hembra   9 1.11111111 0.6009252 0.20030840 0.46191201
+## 18           Los Yuyos  Macho   3 0.66666667 0.5773503 0.33333333 1.43421758
+## 19            Pucusana Hembra   3 1.33333333 0.5773503 0.33333333 1.43421758
+## 20            Pucusana  Macho   6 1.16666667 0.9831921 0.40138649 1.03179681
+## 21           San Pedro Hembra 136 1.20588235 0.7899146 0.06773462 0.13395824
+## 22           San Pedro  Macho 489 1.05725971 0.8400780 0.03798964 0.07464345
+## 23 Santa María del Mar Hembra  17 0.17647059 0.3929526 0.09530501 0.20203760
+## 24 Santa María del Mar  Macho 117 0.05128205 0.2215211 0.02047964 0.04056250
+## 25             Venecia Hembra 234 0.91452991 0.7869390 0.05144381 0.10135447
+## 26             Venecia  Macho 354 0.88983051 0.7540324 0.04007637 0.07881848
+```
+
+---
+
+### Estadísticos según variable independiente (factor)
+
+```r
+library(Rmisc)
+NTP_lc_sex &lt;- summarySE(df, measurevar = c("NTP"), groupvars = c("LC", "SEX"))
+```
+
+---
+
+### Redondear 
+
+```r
+round(NTP_lc_sex$NTP, 3)
+```
+
+```
+##  [1] 2.879 2.684 1.860 2.429 5.500 6.400 4.000 3.333 1.965 2.435 1.157 0.577
+## [13] 3.694 1.626 1.649 1.436 2.333 1.333 3.333 3.333 4.588 3.008 0.235 0.060
+## [25] 2.376 1.805
+```
+
+--
+
+
+```r
+NTP_lc_sex[, -c(1,2)] &lt;- round(NTP_lc_sex[, -c(1,2)], 2)
+head(NTP_lc_sex, 7)
+```
+
+```
+##           LC    SEX   N  NTP   sd   se   ci
+## 1 Agua Dulce Hembra 232 2.88 2.56 0.17 0.33
+## 2 Agua Dulce  Macho 329 2.68 2.57 0.14 0.28
+## 3      Chica Hembra  43 1.86 1.86 0.28 0.57
+## 4      Chica  Macho  21 2.43 2.60 0.57 1.18
+## 5    Conchán Hembra  10 5.50 4.77 1.51 3.41
+## 6    Conchán  Macho   5 6.40 4.34 1.94 5.38
+## 7 Costa Azul Hembra   3 4.00 1.00 0.58 2.48
+```
+
+---
+
+## Subsetting (filtrar, seleccionar) 
+
+```r
+subset(NTP_lc_sex, select = c(LC, SEX, N, NTP, sd))
+```
+
+--
+
+
+```r
+subset(NTP_lc_sex, NTP &gt; 3)
+```
+
+```
+##              LC    SEX   N  NTP   sd   se   ci
+## 5       Conchán Hembra  10 5.50 4.77 1.51 3.41
+## 6       Conchán  Macho   5 6.40 4.34 1.94 5.38
+## 7    Costa Azul Hembra   3 4.00 1.00 0.58 2.48
+## 8    Costa Azul  Macho   3 3.33 3.51 2.03 8.72
+## 13 Los Delfines Hembra  98 3.69 5.01 0.51 1.00
+## 19     Pucusana Hembra   3 3.33 1.53 0.88 3.79
+## 20     Pucusana  Macho   6 3.33 2.66 1.09 2.79
+## 21    San Pedro Hembra 136 4.59 5.64 0.48 0.96
+## 22    San Pedro  Macho 489 3.01 3.59 0.16 0.32
+```
+
+---
+
+## Subsetting (filtrar, seleccionar) 
+
+```r
+subset(NTP_lc_sex, NTP == 4)
+```
+
+```
+##           LC    SEX N NTP sd   se   ci
+## 7 Costa Azul Hembra 3   4  1 0.58 2.48
+```
+--
+
+
+```r
+subset(NTP_lc_sex, NTP != 4)
+```
+
+```
+##                     LC    SEX   N  NTP   sd   se   ci
+## 1           Agua Dulce Hembra 232 2.88 2.56 0.17 0.33
+## 2           Agua Dulce  Macho 329 2.68 2.57 0.14 0.28
+## 3                Chica Hembra  43 1.86 1.86 0.28 0.57
+## 4                Chica  Macho  21 2.43 2.60 0.57 1.18
+## 5              Conchán Hembra  10 5.50 4.77 1.51 3.41
+## 6              Conchán  Macho   5 6.40 4.34 1.94 5.38
+## 8           Costa Azul  Macho   3 3.33 3.51 2.03 8.72
+## 9          El Silencio Hembra  57 1.96 1.76 0.23 0.47
+## 10         El Silencio  Macho  23 2.43 2.45 0.51 1.06
+## 11             Hermosa Hembra 127 1.16 1.53 0.14 0.27
+## 12             Hermosa  Macho 104 0.58 1.37 0.13 0.27
+## 13        Los Delfines Hembra  98 3.69 5.01 0.51 1.00
+## 14        Los Delfines  Macho 348 1.63 3.14 0.17 0.33
+## 15           Los Viños Hembra 416 1.65 2.47 0.12 0.24
+## 16           Los Viños  Macho 438 1.44 2.07 0.10 0.19
+## 17           Los Yuyos Hembra   9 2.33 1.87 0.62 1.44
+## 18           Los Yuyos  Macho   3 1.33 1.53 0.88 3.79
+## 19            Pucusana Hembra   3 3.33 1.53 0.88 3.79
+## 20            Pucusana  Macho   6 3.33 2.66 1.09 2.79
+## 21           San Pedro Hembra 136 4.59 5.64 0.48 0.96
+## 22           San Pedro  Macho 489 3.01 3.59 0.16 0.32
+## 23 Santa María del Mar Hembra  17 0.24 0.56 0.14 0.29
+## 24 Santa María del Mar  Macho 117 0.06 0.27 0.03 0.05
+## 25             Venecia Hembra 234 2.38 2.97 0.19 0.38
+## 26             Venecia  Macho 354 1.81 2.32 0.12 0.24
+```
+
+---
+
+## Subsetting (filtrar, seleccionar) 
+
+```r
+subset(NTP_lc_sex, NTP %in% 5.50)
+```
+
+```
+##        LC    SEX  N NTP   sd   se   ci
+## 5 Conchán Hembra 10 5.5 4.77 1.51 3.41
+```
+
+--
+
+
+```r
+subset(NTP_lc_sex, NTP %in% c(4, 5.50))
+```
+
+```
+##           LC    SEX  N NTP   sd   se   ci
+## 5    Conchán Hembra 10 5.5 4.77 1.51 3.41
+## 7 Costa Azul Hembra  3 4.0 1.00 0.58 2.48
+```
+
+---
+
+##  NAs (not available) y outliers (datos atípicos)
+
+```r
+df_na &lt;- data.frame(abundancia = c(1, NA, NA, 2, 3, 2, 3, NA, 24, 40), localidad = c("sitio a", "sitio a", "sitio a", "sitio a", "sitio a", "sitio b", "sitio b", "sitio b", "sitio b", "sitio b"), altitud = c(760, 760, 760, 760, 760, 1090, 1090, 1090, 1090, 1090))
+```
+
+
+```r
+df_na
+```
+
+```
+##    abundancia localidad altitud
+## 1           1   sitio a     760
+## 2          NA   sitio a     760
+## 3          NA   sitio a     760
+## 4           2   sitio a     760
+## 5           3   sitio a     760
+## 6           2   sitio b    1090
+## 7           3   sitio b    1090
+## 8          NA   sitio b    1090
+## 9          24   sitio b    1090
+## 10         40   sitio b    1090
+```
+
+---
+
+### plot_missing: para ver los NAs por variable
+
+```r
+library(DataExplorer)
+plot_missing(df_na)
+```
+
+![](index_files/figure-html/unnamed-chunk-75-1.png)&lt;!-- --&gt;
+
+---
+
+### Eliminar NAs (tidyr)
+
+```r
+df_na2 &lt;- drop_na(df_na)
+df_na2
+```
+
+```
+##   abundancia localidad altitud
+## 1          1   sitio a     760
+## 2          2   sitio a     760
+## 3          3   sitio a     760
+## 4          2   sitio b    1090
+## 5          3   sitio b    1090
+## 6         24   sitio b    1090
+## 7         40   sitio b    1090
+```
+
+---
+
+### Eliminar NAs (tidyr)
+
+```r
+plot_missing(df_na2)
+```
+
+![](index_files/figure-html/unnamed-chunk-77-1.png)&lt;!-- --&gt;
+
+---
+
+### ¿Eliminar Outliers? **(¿cuándo?: LM, GLM; criterio)**
+- Criterio para establecer límites de outliers:
+  
+- Rango intercuartílico (RIQ): `$$Q3 - Q1$$`
+  
+- Límite máximo: `$$Q3 + 1.5 * RIQ$$`
+  
+- Límite mínimo: `$$Q1 - 1.5 * RIQ$$` 
+
+
+```r
+fivenum(df_na$abundancia)
+```
+
+```
+## [1]  1.0  2.0  3.0 13.5 40.0
+```
+
+---
+
+### Recordando los estadísticos de un boxplot
+
+```r
+boxplot(df_na$abundancia)
+```
+
+![](index_files/figure-html/unnamed-chunk-79-1.png)&lt;!-- --&gt;
+
+---
+### Eliminar outliers (y los que tienden a ser outliers)
+
+```r
+outliers &lt;- boxplot(df_na$abundancia, plot = F)$out
+outliers
+```
+
+```
+## [1] 40
+```
+
+
+```r
+df_sin_outlier &lt;- df_na[-which(df_na$abundancia %in% outliers), ]
+boxplot(df_sin_outlier$abundancia)
+```
+
+&lt;img src="index_files/figure-html/unnamed-chunk-81-1.png" style="display: block; margin: auto auto auto 0;" /&gt;
+
+---
+
+class: inverse, middle, center
+# Introducción al tidyverse 🤩
+
+---
+
+## Data de análisis
+
+```r
+data(msleep)
+
+glimpse(msleep)
+```
+
+```
+## Rows: 83
+## Columns: 11
+## $ name         &lt;chr&gt; "Cheetah", "Owl monkey", "Mountain beaver", "Greater shor…
+## $ genus        &lt;chr&gt; "Acinonyx", "Aotus", "Aplodontia", "Blarina", "Bos", "Bra…
+## $ vore         &lt;chr&gt; "carni", "omni", "herbi", "omni", "herbi", "herbi", "carn…
+## $ order        &lt;chr&gt; "Carnivora", "Primates", "Rodentia", "Soricomorpha", "Art…
+## $ conservation &lt;chr&gt; "lc", NA, "nt", "lc", "domesticated", NA, "vu", NA, "dome…
+## $ sleep_total  &lt;dbl&gt; 12.1, 17.0, 14.4, 14.9, 4.0, 14.4, 8.7, 7.0, 10.1, 3.0, 5…
+## $ sleep_rem    &lt;dbl&gt; NA, 1.8, 2.4, 2.3, 0.7, 2.2, 1.4, NA, 2.9, NA, 0.6, 0.8, …
+## $ sleep_cycle  &lt;dbl&gt; NA, NA, NA, 0.1333333, 0.6666667, 0.7666667, 0.3833333, N…
+## $ awake        &lt;dbl&gt; 11.9, 7.0, 9.6, 9.1, 20.0, 9.6, 15.3, 17.0, 13.9, 21.0, 1…
+## $ brainwt      &lt;dbl&gt; NA, 0.01550, NA, 0.00029, 0.42300, NA, NA, NA, 0.07000, 0…
+## $ bodywt       &lt;dbl&gt; 50.000, 0.480, 1.350, 0.019, 600.000, 3.850, 20.490, 0.04…
+```
+
+
+---
+
+class: center, inverse, middle
+# Pipeline: %&gt;% (Ctrl + Shift + M)
+
+---
+
+## Ejemplos con pipeline
+- x %&gt;% f(y) es lo mismo que f(x, y)
+- y %&gt;% f(x, ., z) es lo mismo que f(x, y, z )
+
+
+```r
+df_ento %&gt;% head()
+df_ento %&gt;% tail()
+df_ento %&gt;% str()
+df_ento %&gt;% subset(NTP %in% c(23:26))
+df_ento %&gt;% view()
+df_ento %&gt;% nrow()
+df_ento %&gt;% ncol()
+df_ento$FAMILIA %&gt;% class()
+df_ento$PUNTO %&gt;% unique()
+df_ento$ORDEN %&gt;% as.factor() %&gt;% levels()
+df_ento$ORDEN %&gt;% table() %&gt;% prop.table()
+objetos_eliminar &lt;- c(iris, asd, ant)
+objetos_eliminar %&gt;% rm()
+```
+
+---
+
+## Ordenando la data con gather(reunir) y spread(extender)
+- Gather: Reune columans en filas
+- Spread: Extiende filas en columnas
+
+## ¿gather o spread?
+
+
+```r
+df1 &lt;- data.frame(
+  nombres = c("Hormiga A", "Hormiga B", "Hormiga C", "Hormiga D"),
+  Pantanos_Villa = c(12, 22, 9, 10), 
+  Ventanilla = c(0, 7, 6, 1)
+)
+```
+
+
+
+```r
+df1
+```
+
+```
+##     nombres Pantanos_Villa Ventanilla
+## 1 Hormiga A             12          0
+## 2 Hormiga B             22          7
+## 3 Hormiga C              9          6
+## 4 Hormiga D             10          1
+```
+
+
+```r
+df1 %&gt;% gather(key = "lugares", value = "abundancia", -nombres)
+```
+
+```
+##     nombres        lugares abundancia
+## 1 Hormiga A Pantanos_Villa         12
+## 2 Hormiga B Pantanos_Villa         22
+## 3 Hormiga C Pantanos_Villa          9
+## 4 Hormiga D Pantanos_Villa         10
+## 5 Hormiga A     Ventanilla          0
+## 6 Hormiga B     Ventanilla          7
+## 7 Hormiga C     Ventanilla          6
+## 8 Hormiga D     Ventanilla          1
+```
+
+---
+
+## ¿gather o spread?
+
+
+```r
+df2 &lt;- data.frame(
+  localidad = c("Pantanos de Villa, Ventanilla", "Pantanos de Villa, Ventanilla" ),
+  Hormiga_A = c(12, 0), 
+  Hormiga_B = c(22, 7), 
+  Hormiga_C = c(9, 6), 
+  Hormiga_D = c(10, 1)
+)
+
+df2
+```
+
+```
+##                       localidad Hormiga_A Hormiga_B Hormiga_C Hormiga_D
+## 1 Pantanos de Villa, Ventanilla        12        22         9        10
+## 2 Pantanos de Villa, Ventanilla         0         7         6         1
+```
+
+--
+
+
+```r
+df2_gather &lt;- df2 %&gt;% gather(key = "Especies", value = "abundancia", -localidad)
+
+df2_gather_2 &lt;- df2 %&gt;% gather(key = "Especies", value = "abundancia", 2:5)
+
+df2_gather_3 &lt;- df2 %&gt;% gather(key = "Especies", value = "abundancia", c(2, 3, 4, 5))
+```
+
+---
+
+## Separate 
+
+- Separa una columna en varias
+
+
+```r
+df2_separate &lt;- df2_gather %&gt;% separate("localidad", c("humedalA", "humedalB"), sep = ",")
+```
+
+
+-- 
+
+
+```r
+df2_separate
+```
+
+```
+##            humedalA    humedalB  Especies abundancia
+## 1 Pantanos de Villa  Ventanilla Hormiga_A         12
+## 2 Pantanos de Villa  Ventanilla Hormiga_A          0
+## 3 Pantanos de Villa  Ventanilla Hormiga_B         22
+## 4 Pantanos de Villa  Ventanilla Hormiga_B          7
+## 5 Pantanos de Villa  Ventanilla Hormiga_C          9
+## 6 Pantanos de Villa  Ventanilla Hormiga_C          6
+## 7 Pantanos de Villa  Ventanilla Hormiga_D         10
+## 8 Pantanos de Villa  Ventanilla Hormiga_D          1
+```
+
+---
+
+## Unite
+- Une varias columnas en una 
+
+
+```r
+df2_separate %&gt;% unite(localidad, c("humedalA", "humedalB"), sep = "-")
+```
+
+```
+##                       localidad  Especies abundancia
+## 1 Pantanos de Villa- Ventanilla Hormiga_A         12
+## 2 Pantanos de Villa- Ventanilla Hormiga_A          0
+## 3 Pantanos de Villa- Ventanilla Hormiga_B         22
+## 4 Pantanos de Villa- Ventanilla Hormiga_B          7
+## 5 Pantanos de Villa- Ventanilla Hormiga_C          9
+## 6 Pantanos de Villa- Ventanilla Hormiga_C          6
+## 7 Pantanos de Villa- Ventanilla Hormiga_D         10
+## 8 Pantanos de Villa- Ventanilla Hormiga_D          1
+```
+
+---
+
+## Select
+
+
+```r
+msleep %&gt;% select(order, order, sleep_total)
+```
+
+```
+## # A tibble: 83 x 2
+##    order        sleep_total
+##    &lt;chr&gt;              &lt;dbl&gt;
+##  1 Carnivora           12.1
+##  2 Primates            17  
+##  3 Rodentia            14.4
+##  4 Soricomorpha        14.9
+##  5 Artiodactyla         4  
+##  6 Pilosa              14.4
+##  7 Carnivora            8.7
+##  8 Rodentia             7  
+##  9 Carnivora           10.1
+## 10 Artiodactyla         3  
+## # … with 73 more rows
+```
+
+---
+
+## Select
+
+
+```r
+msleep %&gt;% select(3:5)
+```
+
+```
+## # A tibble: 83 x 3
+##    vore  order        conservation
+##    &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       
+##  1 carni Carnivora    lc          
+##  2 omni  Primates     &lt;NA&gt;        
+##  3 herbi Rodentia     nt          
+##  4 omni  Soricomorpha lc          
+##  5 herbi Artiodactyla domesticated
+##  6 herbi Pilosa       &lt;NA&gt;        
+##  7 carni Carnivora    vu          
+##  8 &lt;NA&gt;  Rodentia     &lt;NA&gt;        
+##  9 carni Carnivora    domesticated
+## 10 herbi Artiodactyla lc          
+## # … with 73 more rows
+```
+
+---
+
+## Select
+
+
+```r
+msleep %&gt;% select(c(5, 6, 7))
+```
+
+```
+## # A tibble: 83 x 3
+##    conservation sleep_total sleep_rem
+##    &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;
+##  1 lc                  12.1      NA  
+##  2 &lt;NA&gt;                17         1.8
+##  3 nt                  14.4       2.4
+##  4 lc                  14.9       2.3
+##  5 domesticated         4         0.7
+##  6 &lt;NA&gt;                14.4       2.2
+##  7 vu                   8.7       1.4
+##  8 &lt;NA&gt;                 7        NA  
+##  9 domesticated        10.1       2.9
+## 10 lc                   3        NA  
+## # … with 73 more rows
+```
+
+---
+
+## Select
+
+
+```r
+msleep %&gt;% select_if(is.numeric)
+```
+
+```
+## # A tibble: 83 x 6
+##    sleep_total sleep_rem sleep_cycle awake  brainwt  bodywt
+##          &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;    &lt;dbl&gt;   &lt;dbl&gt;
+##  1        12.1      NA        NA      11.9 NA        50    
+##  2        17         1.8      NA       7    0.0155    0.48 
+##  3        14.4       2.4      NA       9.6 NA         1.35 
+##  4        14.9       2.3       0.133   9.1  0.00029   0.019
+##  5         4         0.7       0.667  20    0.423   600    
+##  6        14.4       2.2       0.767   9.6 NA         3.85 
+##  7         8.7       1.4       0.383  15.3 NA        20.5  
+##  8         7        NA        NA      17   NA         0.045
+##  9        10.1       2.9       0.333  13.9  0.07     14    
+## 10         3        NA        NA      21    0.0982   14.8  
+## # … with 73 more rows
+```
+
+---
+
+## Select
+
+
+```r
+msleep %&gt;% select_if(is.character)
+```
+
+```
+## # A tibble: 83 x 5
+##    name                       genus       vore  order        conservation
+##    &lt;chr&gt;                      &lt;chr&gt;       &lt;chr&gt; &lt;chr&gt;        &lt;chr&gt;       
+##  1 Cheetah                    Acinonyx    carni Carnivora    lc          
+##  2 Owl monkey                 Aotus       omni  Primates     &lt;NA&gt;        
+##  3 Mountain beaver            Aplodontia  herbi Rodentia     nt          
+##  4 Greater short-tailed shrew Blarina     omni  Soricomorpha lc          
+##  5 Cow                        Bos         herbi Artiodactyla domesticated
+##  6 Three-toed sloth           Bradypus    herbi Pilosa       &lt;NA&gt;        
+##  7 Northern fur seal          Callorhinus carni Carnivora    vu          
+##  8 Vesper mouse               Calomys     &lt;NA&gt;  Rodentia     &lt;NA&gt;        
+##  9 Dog                        Canis       carni Carnivora    domesticated
+## 10 Roe deer                   Capreolus   herbi Artiodactyla lc          
+## # … with 73 more rows
+```
+
+---
+
+## Filter
+
+
+```r
+msleep %&gt;% filter(order == "Carnivora")
+```
+
+```
+## # A tibble: 12 x 11
+##    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+##  1 Cheet… Acin… carni Carn… lc                  12.1      NA        NA      11.9
+##  2 North… Call… carni Carn… vu                   8.7       1.4       0.383  15.3
+##  3 Dog    Canis carni Carn… domesticated        10.1       2.9       0.333  13.9
+##  4 Domes… Felis carni Carn… domesticated        12.5       3.2       0.417  11.5
+##  5 Gray … Hali… carni Carn… lc                   6.2       1.5      NA      17.8
+##  6 Tiger  Pant… carni Carn… en                  15.8      NA        NA       8.2
+##  7 Jaguar Pant… carni Carn… nt                  10.4      NA        NA      13.6
+##  8 Lion   Pant… carni Carn… vu                  13.5      NA        NA      10.5
+##  9 Caspi… Phoca carni Carn… vu                   3.5       0.4      NA      20.5
+## 10 Genet  Gene… carni Carn… &lt;NA&gt;                 6.3       1.3      NA      17.7
+## 11 Arcti… Vulp… carni Carn… &lt;NA&gt;                12.5      NA        NA      11.5
+## 12 Red f… Vulp… carni Carn… &lt;NA&gt;                 9.8       2.4       0.35   14.2
+## # … with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;
+```
+
+---
+
+## Filter
+
+
+```r
+msleep %&gt;% filter(order != "Carnivora")
+```
+
+```
+## # A tibble: 71 x 11
+##    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+##  1 Owl m… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
+##  2 Mount… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
+##  3 Great… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
+##  4 Cow    Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+##  5 Three… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
+##  6 Vespe… Calo… &lt;NA&gt;  Rode… &lt;NA&gt;                 7        NA        NA      17  
+##  7 Roe d… Capr… herbi Arti… lc                   3        NA        NA      21  
+##  8 Goat   Capri herbi Arti… lc                   5.3       0.6      NA      18.7
+##  9 Guine… Cavis herbi Rode… domesticated         9.4       0.8       0.217  14.6
+## 10 Grivet Cerc… omni  Prim… lc                  10         0.7      NA      14  
+## # … with 61 more rows, and 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;
+```
+
+---
+
+## Filter
+
+
+```r
+msleep %&gt;% filter(order != "Carnivora")
+```
+
+```
+## # A tibble: 71 x 11
+##    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+##  1 Owl m… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
+##  2 Mount… Aplo… herbi Rode… nt                  14.4       2.4      NA       9.6
+##  3 Great… Blar… omni  Sori… lc                  14.9       2.3       0.133   9.1
+##  4 Cow    Bos   herbi Arti… domesticated         4         0.7       0.667  20  
+##  5 Three… Brad… herbi Pilo… &lt;NA&gt;                14.4       2.2       0.767   9.6
+##  6 Vespe… Calo… &lt;NA&gt;  Rode… &lt;NA&gt;                 7        NA        NA      17  
+##  7 Roe d… Capr… herbi Arti… lc                   3        NA        NA      21  
+##  8 Goat   Capri herbi Arti… lc                   5.3       0.6      NA      18.7
+##  9 Guine… Cavis herbi Rode… domesticated         9.4       0.8       0.217  14.6
+## 10 Grivet Cerc… omni  Prim… lc                  10         0.7      NA      14  
+## # … with 61 more rows, and 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;
+```
+
+---
+
+## Filter
+
+
+```r
+msleep %&gt;% filter(order %in% c("Carnivora", "Primates"))
+```
+
+```
+## # A tibble: 24 x 11
+##    name   genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##    &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+##  1 Cheet… Acin… carni Carn… lc                  12.1      NA        NA      11.9
+##  2 Owl m… Aotus omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
+##  3 North… Call… carni Carn… vu                   8.7       1.4       0.383  15.3
+##  4 Dog    Canis carni Carn… domesticated        10.1       2.9       0.333  13.9
+##  5 Grivet Cerc… omni  Prim… lc                  10         0.7      NA      14  
+##  6 Patas… Eryt… omni  Prim… lc                  10.9       1.1      NA      13.1
+##  7 Domes… Felis carni Carn… domesticated        12.5       3.2       0.417  11.5
+##  8 Galago Gala… omni  Prim… &lt;NA&gt;                 9.8       1.1       0.55   14.2
+##  9 Gray … Hali… carni Carn… lc                   6.2       1.5      NA      17.8
+## 10 Human  Homo  omni  Prim… &lt;NA&gt;                 8         1.9       1.5    16  
+## # … with 14 more rows, and 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;
+```
+
+---
+
+## Filter
+
+
+```r
+msleep %&gt;% filter(sleep_total &gt;= 16)
+```
+
+```
+## # A tibble: 8 x 11
+##   name   genus  vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+## 1 Owl m… Aotus  omni  Prim… &lt;NA&gt;                17         1.8      NA       7  
+## 2 Long-… Dasyp… carni Cing… lc                  17.4       3.1       0.383   6.6
+## 3 North… Didel… omni  Dide… lc                  18         4.9       0.333   6  
+## 4 Big b… Eptes… inse… Chir… lc                  19.7       3.9       0.117   4.3
+## 5 Thick… Lutre… carni Dide… lc                  19.4       6.6      NA       4.6
+## 6 Littl… Myotis inse… Chir… &lt;NA&gt;                19.9       2         0.2     4.1
+## 7 Giant… Priod… inse… Cing… en                  18.1       6.1      NA       5.9
+## 8 Arcti… Sperm… herbi Rode… lc                  16.6      NA        NA       7.4
+## # … with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;
+```
+
+---
+
+## Filter
+
+
+```r
+msleep %&gt;% filter(sleep_total &lt;= 3)
+```
+
+```
+## # A tibble: 4 x 11
+##   name   genus  vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   &lt;chr&gt;  &lt;chr&gt;  &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+## 1 Roe d… Capre… herbi Arti… lc                   3        NA            NA  21  
+## 2 Horse  Equus  herbi Peri… domesticated         2.9       0.6           1  21.1
+## 3 Giraf… Giraf… herbi Arti… cd                   1.9       0.4          NA  22.1
+## 4 Pilot… Globi… carni Ceta… cd                   2.7       0.1          NA  21.4
+## # … with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;
+```
+
+---
+
+## Filter
+
+
+```r
+msleep %&gt;% filter(sleep_total %in% 15:20)
+```
+
+```
+## # A tibble: 2 x 11
+##   name    genus vore  order conservation sleep_total sleep_rem sleep_cycle awake
+##   &lt;chr&gt;   &lt;chr&gt; &lt;chr&gt; &lt;chr&gt; &lt;chr&gt;              &lt;dbl&gt;     &lt;dbl&gt;       &lt;dbl&gt; &lt;dbl&gt;
+## 1 Owl mo… Aotus omni  Prim… &lt;NA&gt;                  17       1.8      NA         7
+## 2 North … Dide… omni  Dide… lc                    18       4.9       0.333     6
+## # … with 2 more variables: brainwt &lt;dbl&gt;, bodywt &lt;dbl&gt;
+```
+
+---
+
+## group_by y summarise (summarize)
+
+
+```r
+msleep %&gt;% 
+  group_by(order) %&gt;% 
+  summarise(promedio = mean(sleep_total)) 
+```
+
+```
+##   promedio
+## 1 10.43373
+```
+
+---
+
+## group_by y summarise (summarize)
+
+
+```r
+msleep %&gt;% 
+  group_by(conservation, order) %&gt;% 
+  summarise(promedio = mean(sleep_total)) %&gt;% 
+  head(4)
+```
+
+```
+##   promedio
+## 1 10.43373
+```
+
+---
+
+## group_by y summarise (summarize)
+
+
+```r
+msleep %&gt;% 
+  group_by(conservation, order) %&gt;% 
+  summarise(desviacion_estandar = sd(sleep_total))
+```
+
+```
+##   desviacion_estandar
+## 1            4.450357
+```
+
+---
+
+## group_by y summarise (summarize)
+
+
+```r
+msleep %&gt;% 
+  group_by(conservation, order) %&gt;% 
+  summarise(promedio = mean(sleep_total),
+            desviacion_estandar = sd(sleep_total))
+```
+
+```
+##   promedio desviacion_estandar
+## 1 10.43373            4.450357
+```
+
+---
+
+## group_by y summarise (summarize)
+
+
+```r
+library(plotrix)
+
+msleep %&gt;% 
+  group_by(conservation, order) %&gt;% 
+  summarise(promedio = mean(sleep_total),
+            desviacion_estandar = sd(sleep_total),
+            erorr_estandar = std.error(sleep_total)) 
+```
+
+```
+##   promedio desviacion_estandar erorr_estandar
+## 1 10.43373            4.450357      0.4884901
+```
+
+---
+
+## group_by y summarise (summarize)
+
+
+```r
+msleep %&gt;% 
+  group_by(conservation, order) %&gt;% 
+  summarise(promedio = mean(sleep_total),
+            desviacion_estandar = sd(sleep_total),
+            erorr_estandar = std.error(sleep_total)) 
+```
+
+```
+##   promedio desviacion_estandar erorr_estandar
+## 1 10.43373            4.450357      0.4884901
+```
+
+---
+
+## mutate
+
+
+```r
+ms_sleep2 &lt;- msleep %&gt;% 
+  select(order, genus, sleep_total) %&gt;% 
+  mutate(sueño_maximo = max(sleep_total))
+
+ms_sleep2
+```
+
+```
+## # A tibble: 83 x 4
+##    order        genus       sleep_total sueño_maximo
+##    &lt;chr&gt;        &lt;chr&gt;             &lt;dbl&gt;        &lt;dbl&gt;
+##  1 Carnivora    Acinonyx           12.1         19.9
+##  2 Primates     Aotus              17           19.9
+##  3 Rodentia     Aplodontia         14.4         19.9
+##  4 Soricomorpha Blarina            14.9         19.9
+##  5 Artiodactyla Bos                 4           19.9
+##  6 Pilosa       Bradypus           14.4         19.9
+##  7 Carnivora    Callorhinus         8.7         19.9
+##  8 Rodentia     Calomys             7           19.9
+##  9 Carnivora    Canis              10.1         19.9
+## 10 Artiodactyla Capreolus           3           19.9
+## # … with 73 more rows
+```
+
+---
+
+## mutate
+
+
+```r
+ms_sleep2 %&gt;% 
+  select(order, genus, sleep_total, sueño_maximo) %&gt;% 
+  mutate(diferencia_sueño = sueño_maximo - sleep_total) %&gt;% 
+  head(3)
+```
+
+```
+## # A tibble: 3 x 5
+##   order     genus      sleep_total sueño_maximo diferencia_sueño
+##   &lt;chr&gt;     &lt;chr&gt;            &lt;dbl&gt;        &lt;dbl&gt;            &lt;dbl&gt;
+## 1 Carnivora Acinonyx          12.1         19.9             7.80
+## 2 Primates  Aotus             17           19.9             2.90
+## 3 Rodentia  Aplodontia        14.4         19.9             5.50
+```
+
+---
+
+## Rename
+
+
+```r
+ms_sleep2 %&gt;% 
+  dplyr::rename(orden = order, Genero = genus, total = sleep_total, maximo = sueño_maximo)
+```
+
+```
+## # A tibble: 83 x 4
+##    orden        Genero      total maximo
+##    &lt;chr&gt;        &lt;chr&gt;       &lt;dbl&gt;  &lt;dbl&gt;
+##  1 Carnivora    Acinonyx     12.1   19.9
+##  2 Primates     Aotus        17     19.9
+##  3 Rodentia     Aplodontia   14.4   19.9
+##  4 Soricomorpha Blarina      14.9   19.9
+##  5 Artiodactyla Bos           4     19.9
+##  6 Pilosa       Bradypus     14.4   19.9
+##  7 Carnivora    Callorhinus   8.7   19.9
+##  8 Rodentia     Calomys       7     19.9
+##  9 Carnivora    Canis        10.1   19.9
+## 10 Artiodactyla Capreolus     3     19.9
+## # … with 73 more rows
+```
+
+
+---
+
+class:center,inverse,middle
+# Practica: Data de insectos
+
+
+
+---
+
+class: center, inverse, middle
+# Dudas 🤔
+
+---
+
+# Pero antes...🤔
+- example(): Un ejemplo de R sobre cualquier comando
+
+- [**Swirl**](https://swirlstats.com/students.html): Paquete para aprender R &lt;3
+
+- help(): Pedir ayuda en R (muestra info relacionada al comando)
+
+- Stackoverflow: Comunidad comprometida
+
+- Cheatsheet: [Basic](https://www.rstudio.com/wp-content/uploads/2016/10/r-cheat-sheet-3.pdf); [Dplyr](https://www.rstudio.com/wp-content/uploads/2015/02/data-wrangling-cheatsheet.pdf); [ggplot2](https://www.rstudio.com/wp-content/uploads/2015/03/ggplot2-cheatsheet.pdf)
+
+---
+
+class: center, inverse, middle
+# Fin 👨‍💻
+
+
+
+
+
+
+
+
+    </textarea>
+<style data-target="print-only">@media screen {.remark-slide-container{display:block;}.remark-slide-scaler{box-shadow:none;}}</style>
+<script src="https://remarkjs.com/downloads/remark-latest.min.js"></script>
+<script>var slideshow = remark.create({
+"highlightStyle": "github",
+"highlightLines": true,
+"countIncrementalSlides": false
+});
+if (window.HTMLWidgets) slideshow.on('afterShowSlide', function (slide) {
+  window.dispatchEvent(new Event('resize'));
+});
+(function(d) {
+  var s = d.createElement("style"), r = d.querySelector(".remark-slide-scaler");
+  if (!r) return;
+  s.type = "text/css"; s.innerHTML = "@page {size: " + r.style.width + " " + r.style.height +"; }";
+  d.head.appendChild(s);
+})(document);
+
+(function(d) {
+  var el = d.getElementsByClassName("remark-slides-area");
+  if (!el) return;
+  var slide, slides = slideshow.getSlides(), els = el[0].children;
+  for (var i = 1; i < slides.length; i++) {
+    slide = slides[i];
+    if (slide.properties.continued === "true" || slide.properties.count === "false") {
+      els[i - 1].className += ' has-continuation';
+    }
+  }
+  var s = d.createElement("style");
+  s.type = "text/css"; s.innerHTML = "@media print { .has-continuation { display: none; } }";
+  d.head.appendChild(s);
+})(document);
+// delete the temporary CSS (for displaying all slides initially) when the user
+// starts to view slides
+(function() {
+  var deleted = false;
+  slideshow.on('beforeShowSlide', function(slide) {
+    if (deleted) return;
+    var sheets = document.styleSheets, node;
+    for (var i = 0; i < sheets.length; i++) {
+      node = sheets[i].ownerNode;
+      if (node.dataset["target"] !== "print-only") continue;
+      node.parentNode.removeChild(node);
+    }
+    deleted = true;
+  });
+})();
+(function() {
+  "use strict"
+  // Replace <script> tags in slides area to make them executable
+  var scripts = document.querySelectorAll(
+    '.remark-slides-area .remark-slide-container script'
+  );
+  if (!scripts.length) return;
+  for (var i = 0; i < scripts.length; i++) {
+    var s = document.createElement('script');
+    var code = document.createTextNode(scripts[i].textContent);
+    s.appendChild(code);
+    var scriptAttrs = scripts[i].attributes;
+    for (var j = 0; j < scriptAttrs.length; j++) {
+      s.setAttribute(scriptAttrs[j].name, scriptAttrs[j].value);
+    }
+    scripts[i].parentElement.replaceChild(s, scripts[i]);
+  }
+})();
+(function() {
+  var links = document.getElementsByTagName('a');
+  for (var i = 0; i < links.length; i++) {
+    if (/^(https?:)?\/\//.test(links[i].getAttribute('href'))) {
+      links[i].target = '_blank';
+    }
+  }
+})();
+// adds .remark-code-has-line-highlighted class to <pre> parent elements
+// of code chunks containing highlighted lines with class .remark-code-line-highlighted
+(function(d) {
+  const hlines = d.querySelectorAll('.remark-code-line-highlighted');
+  const preParents = [];
+  const findPreParent = function(line, p = 0) {
+    if (p > 1) return null; // traverse up no further than grandparent
+    const el = line.parentElement;
+    return el.tagName === "PRE" ? el : findPreParent(el, ++p);
+  };
+
+  for (let line of hlines) {
+    let pre = findPreParent(line);
+    if (pre && !preParents.includes(pre)) preParents.push(pre);
+  }
+  preParents.forEach(p => p.classList.add("remark-code-has-line-highlighted"));
+})(document);</script>
+
+<script>
+slideshow._releaseMath = function(el) {
+  var i, text, code, codes = el.getElementsByTagName('code');
+  for (i = 0; i < codes.length;) {
+    code = codes[i];
+    if (code.parentNode.tagName !== 'PRE' && code.childElementCount === 0) {
+      text = code.textContent;
+      if (/^\\\((.|\s)+\\\)$/.test(text) || /^\\\[(.|\s)+\\\]$/.test(text) ||
+          /^\$\$(.|\s)+\$\$$/.test(text) ||
+          /^\\begin\{([^}]+)\}(.|\s)+\\end\{[^}]+\}$/.test(text)) {
+        code.outerHTML = code.innerHTML;  // remove <code></code>
+        continue;
+      }
+    }
+    i++;
+  }
+};
+slideshow._releaseMath(document);
+</script>
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+(function () {
+  var script = document.createElement('script');
+  script.type = 'text/javascript';
+  script.src  = 'https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-MML-AM_CHTML';
+  if (location.protocol !== 'file:' && /^https?:/.test(script.src))
+    script.src  = script.src.replace(/^https?:/, '');
+  document.getElementsByTagName('head')[0].appendChild(script);
+})();
+</script>
+  </body>
+</html>
